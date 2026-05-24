@@ -1,0 +1,22 @@
+name: Deploy to Azure Slot (Staging)
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Azure Web App Slot
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: badboy
+          slot-name: staging
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          package: .
