@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Flask app is working on Azure!"
+    return "Flask app is working on Azure deployment!"
