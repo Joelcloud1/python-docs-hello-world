@@ -1,4 +1,4 @@
-name: Deploy to Azure Staging App
+name: Deploy to Azure Staging Slot
 
 on:
   push:
@@ -13,9 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Azure Web App
+      - name: Deploy to Azure Web App Slot
         uses: azure/webapps-deploy@v3
         with:
-          app-name: badboy-staging
+          app-name: badboy
+          slot-name: staging
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
